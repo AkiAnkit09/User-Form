@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="./LoginPage.css">
+	<title>dashboard</title>
+</head>
+
+<body id="dashboardid">
+	<h1>Welcome to Employee Dashboard</h1>
+
+	<div class="container">
+
+		<input type="button" class="submit" value="Logoff" name="submit" onclick="backf()">
+		<p>Employee Name :
+			<span id='empName'></span>
+		</p>
+		<p> Employee ID
+			<span id='empId'></span>
+		</p>
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		var empdata = [
+			{ "name": "Admin", "email": "Admin@gmail.com", "id": 1100 },
+			{ "name": "Ankit", "email": "ankit@gmail.com", "id": 1200 },
+			{ "name": "User", "email": "user@gmail.com", "id": 1300 }
+		];
+		window.onload = function () {
+			debugger;
+			var urlParams = new URLSearchParams(window.location.search);
+			var empName = urlParams.get("username");
+
+			document.getElementById('empName').innerHTML = empName;
+			empdata.forEach(function myFunction(item, index) {
+				if (item.name == empName) {
+					var idofemp = item.id;
+					document.getElementById('empId').innerHTML = idofemp;
+
+				}
+			});
+			debugger;
+		}
+		function backf() {
+			window.history.back();
+		}
+	</script>
+
+
+</body>
+
+</html>
+
