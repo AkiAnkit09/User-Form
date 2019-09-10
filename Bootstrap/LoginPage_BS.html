@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="stylesheet" type="text/css" href="./LoginPage_BS.css">
+	<title>Login</title>
+</head>
+<body id="loginpage">
+<div class="container">
+<div class="header">
+ <h1>Employee Login</h1>
+ </div>
+
+ <form name="login" onsubmit="return validateForm() ;" method="post">
+
+ <br>
+ <li>Username: <input class="username" type="text" name="username">
+ </li>
+ </br>
+<br>
+ <li>Password: <input class="password" type="password" name="password">
+ </li>
+ </br>
+
+<input type="button" class="submit" value="Log In" name="submit" onclick="validatef()">
+
+</form>
+</div>
+<script src= "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> 
+    </script> 
+<script type="text/javascript">
+var count= 2;
+function validatef()
+{
+	debugger;
+	var un = document.login.username.value;
+	var pw = document.login.password.value;
+	
+	var valid = false;
+	var usernameArray = ["Ankit", "Admin", "User"];
+	var passwordArray = ["ankit123", "admin", "user_123"];
+	for (var i = 0; i < usernameArray.length; i++)
+ {
+	if ((un == usernameArray[i]) && (pw == passwordArray[i]))
+	{
+		valid = true;
+		break;
+	}
+}
+	if (valid)
+	{
+		//alert("Login was successful");
+		window.location.href = "./dashboard_BS.html?username=" +un;
+		return false;
+	}
+	var again = " Try Again";
+	if (count ==1)
+	{
+		again = " Try Again"
+	}
+	if (count >= 1)
+	{
+		alert("Wrong password or username")
+		count--;
+	}
+	else
+	{
+		alert("Incorrect password or username you are now blocked");
+		
+		document.login.username.disabled = true;
+		document.login.password.disabled = true;
+		return false;
+	}
+};
+$(document).keypress(function(event){
+	var keycode=event.keyCode;
+	if(keycode=='13'){
+		validatef();
+	}
+});
+</script>
+
+
+</body>
+</html>
+

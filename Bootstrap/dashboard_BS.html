@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Employee Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./LoginPage_BS.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body id="dashboardid">
+		<h1>Welcome To Employee Dashboard </h1>
+		<p>Employee Name :<span id='empName'></span>
+			</p>
+  <div class="row">
+    <div class="col-sm-4">
+			<div class="container">
+					
+					Employee ID :<span id='empId'></span>
+				
+					</div>
+	</div>
+    <div class="col-sm-4">
+			<div class="container">
+			Email ID :	<span id='empEmail'></span>
+			
+			</div>
+
+	</div>
+    <div class="col-sm-4">
+			<div class="container">
+			Phone Number : <span id='empPhone'></span>
+					
+					</div>
+	</div>
+  </div>
+  <input type="button" class="submit" value="Logoff" name="submit" onclick="backf()">
+  <script type="text/javascript">
+	var empdata = [
+		{ "name": "Admin", "email": "Admin@gmail.com", "id": 1100, "phone": 99999 },
+		{ "name": "Ankit", "email": "ankit@gmail.com", "id": 1200, "phone": 99999888 },
+		{ "name": "User", "email": "user@gmail.com", "id": 1300, "phone": 9999909890 }
+	];
+	window.onload = function () {
+		debugger;
+		var urlParams = new URLSearchParams(window.location.search);
+		var empName = urlParams.get("username");
+
+		document.getElementById('empName').innerHTML = empName;
+		empdata.forEach(function myFunction(item, index) {
+			if (item.name == empName) {
+				var idofemp = item.id;
+				document.getElementById('empId').innerHTML = idofemp;
+				var emailOfEmp =item.email;
+				document.getElementById('empEmail').innerHTML = emailOfEmp;
+				var phoneOfEmp =item.phone;
+				document.getElementById('empPhone').innerHTML = phoneOfEmp;
+			}
+		});
+		
+	}
+	function backf() {
+		window.history.back();
+	}
+</script>
+
+</body>
+</html>
